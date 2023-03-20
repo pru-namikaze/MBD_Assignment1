@@ -1,0 +1,883 @@
+<html>
+<head>
+    <title>Compare Linear Regression from dataset</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          margin: 0;
+          font-family: Arial;
+        }
+        
+        .header {
+          text-align: center;
+          padding: 32px;
+        }
+        
+        /* Create two equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          flex: calc(100 / 28) + "%"
+        }
+        
+        .column img {
+          margin-top: 12px;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+    </style>    
+</head>    
+<body>
+    <div class="row">
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/Appliances_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_lights.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T1.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T2.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T3.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T4.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T5.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T6.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T7.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T8.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T9.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/Appliances_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/lights_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/lights_vs_lights.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T1.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T2.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T3.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T4.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T5.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T6.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T7.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T8.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T9.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/lights_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/lights_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/lights_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/lights_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/lights_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/lights_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/lights_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/lights_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T1_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T1_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T1_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T1_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T1_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T1_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T1_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T1_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T1_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T1_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_1_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_1_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T2_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T2_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T2_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T2_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T2_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T2_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T2_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T2_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T2_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T2_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_2_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_2_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T3_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T3_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T3_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T3_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T3_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T3_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T3_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T3_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T3_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T3_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_3_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_3_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T4_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T4_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T4_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T4_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T4_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T4_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T4_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T4_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T4_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T4_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_4_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_4_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T5_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T5_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T5_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T5_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T5_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T5_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T5_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T5_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T5_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T5_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_5_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_5_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T6_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T6_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T6_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T6_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T6_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T6_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T6_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T6_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T6_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T6_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_6_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_6_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T7_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T7_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T7_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T7_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T7_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T7_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T7_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T7_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T7_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T7_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_7_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_7_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T8_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T8_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T8_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T8_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T8_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T8_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T8_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T8_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T8_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T8_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_8_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_8_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T9_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T9_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T9_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T9_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T9_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T9_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T9_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T9_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T9_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T9_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_9_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_9_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/T_out_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_lights.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T1.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T2.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T3.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T4.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T5.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T6.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T7.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T8.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T9.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/T_out_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/Press_mm_hg_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_lights.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T1.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T2.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T3.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T4.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T5.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T6.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T7.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T8.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T9.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/Press_mm_hg_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/RH_out_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_lights.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T1.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T2.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T3.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T4.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T5.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T6.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T7.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T8.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T9.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/RH_out_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/Windspeed_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_lights.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T1.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T2.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T3.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T4.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T5.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T6.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T7.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T8.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T9.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/Windspeed_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/Visibility_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_lights.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T1.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T2.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T3.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T4.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T5.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T6.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T7.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T8.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T9.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/Visibility_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/Tdewpoint_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_lights.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T1.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T2.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T3.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T4.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T5.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T6.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T7.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T8.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T9.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/Tdewpoint_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/rv1_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_lights.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T1.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T2.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T3.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T4.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T5.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T6.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T7.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T8.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T9.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/rv1_vs_rv2.png" style="width:100%">
+    </div></hr>
+        <div class="column" style="display: flex; flex: 1 1 3.57143%">
+            <img src=".././graphs/rv2_vs_Appliances.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_lights.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T1.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_1.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T2.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_2.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T3.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_3.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T4.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_4.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T5.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_5.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T6.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_6.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T7.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_7.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T8.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_8.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T9.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_9.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_T_out.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_Press_mm_hg.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_RH_out.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_Windspeed.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_Visibility.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_Tdewpoint.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_rv1.png" style="width:100%">
+            <img src=".././graphs/rv2_vs_rv2.png" style="width:100%">
+    </div></hr>
+    </div></hr>
+</body>
+</html>
