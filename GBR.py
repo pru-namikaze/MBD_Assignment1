@@ -119,8 +119,8 @@ figure.savefig("GBR_metrics_vs_iteration_for_multiple_max_depth.png")
 figure.show()
 
 # %%
-# Reference: https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html
-
+# Visualize feature importance of the model using bar graph subplots.
+# Reference: https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
 gbr_metrics = pandas.read_csv(GBR_RELEATIVE_FEATURE_IMPORTANCE_DATASET_PATH.name)
 
 figure, (plot1, plot2) = plot.subplots(1, 2)
